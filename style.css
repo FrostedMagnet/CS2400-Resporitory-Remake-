@@ -318,8 +318,9 @@ body {
     font-weight:bold;
 }
 
-.space-status.avilable{
+.space-status.available{
     background-color:#35c98b;
+    color:white;
 }
 
 .space-status.occupied{

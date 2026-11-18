@@ -52,4 +52,39 @@
         Back to Campus Map
     </button>
     
+     <script>
+       document.addEventListener("DOMContentLoaded", function () {
+        const parkingSpaces=document.querySelectorAll(".parking-space");
+       
+        parkingSpaces.forEach(function(space) {
+            const statusIcon = document.createElement("span");
+
+            const isAvailable = Math.random() < 0.5;
+
+            if(isAvailable) {
+                statusIcon.className = "space-status available";
+                statusIcon.textContent = "✓";
+                statusIcon.setAttribute("aria-label", "Available parking space");
+                statusIcon.setAttribute("title", "Available parking space");
+            } else {
+                    const carIcon = document.createElement("span");
+                    carIcon.className="car-icon";
+                    carIcon.textContent="🚗";
+                    carIcon.setAttribute("title", "Car is parked");
+
+                    space.appendChild(cartoon);
+
+                statusIcon.className="space-status occupied";
+                statusIcon.textContent = "×";
+                statusIcon.setAttribute("aria-label", "Occupied parking space");
+                statusIcon.setAttribute("title", "Occupied parking space");
+
+            }
+
+            space.appendChild(statusIcon);
+            
+        });
+    });
+    </script>
+
 </body>
