@@ -321,3 +321,7 @@ body {
 .space-status.avilable{
     background-color:#35c98b;
 }
+
+.space-status.occupied{
+    background-color:#e05252;
+}
