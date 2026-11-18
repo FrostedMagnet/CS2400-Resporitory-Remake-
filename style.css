@@ -285,7 +285,7 @@ body {
     top:20px;
     bottom:20px;
     left:50%;
-    border-left:3px dahsed white;
+    border-left:3px dashed white;
 }
 
 .parking-space2{
@@ -300,8 +300,9 @@ body {
 .parking-space{
     display:flex;
     align-items: center;
-    justify-content: flex-end; 
-    padding-right:18px;
+    justify-content: space-between; 
+    padding:0 15px;
+    position:relative;
 }
 
 .space-status {
@@ -316,13 +317,44 @@ body {
     color:white;
     font-size:20px;
     font-weight:bold;
+    cursor:pointer;
+    margin-left:auto;
 }
 
 .space-status.available{
     background-color:#35c98b;
-    color:white;
 }
 
 .space-status.occupied{
     background-color:#e05252;
+}
+
+.car-icon {
+    font-size:30px;
+    line-height:1;
+    cursor:pointer;
+    margin-right:auto;
+}
+
+.car-icon,
+.space-status {
+    position:relative;
+}
+
+.car-icon:hover::after,
+.space-status:hover::after {
+    content: attr(data-tooltip);
+    position:absolute;
+    bottom:38px;
+    left:50%;
+    transform:translateX(-50%);
+
+    background-color:#123c69;
+    color:white;
+    padding:7px 10px;
+    border-radius:5px;
+    font-size:12px;
+    font-weight:normal;
+    white-space:nowrap;
+    z-index:10;
 }

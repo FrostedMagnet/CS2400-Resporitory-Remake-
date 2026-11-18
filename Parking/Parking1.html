@@ -64,21 +64,22 @@
             if(isAvailable) {
                 statusIcon.className = "space-status available";
                 statusIcon.textContent = "✓";
-                statusIcon.setAttribute("aria-label", "Available parking space");
-                statusIcon.setAttribute("title", "Available parking space");
+                statusIcon.setAttribute("data-tooltip", "Available parking space");
+                statusIcon.setAttribute("aria-label", "Available Parking Space");
             } else {
                     const carIcon = document.createElement("span");
                     carIcon.className="car-icon";
                     carIcon.textContent="🚗";
-                    carIcon.setAttribute("title", "Car is parked");
+                    carIcon.setAttribute("data-tooltip", "Car is parked");
+                    
 
                     space.appendChild(carIcon);
 
                 statusIcon.className="space-status occupied";
                 statusIcon.textContent = "×";
-                statusIcon.setAttribute("aria-label", "Occupied parking space");
-                statusIcon.setAttribute("title", "Occupied parking space");
-
+                statusIcon.setAttribute("data-tooltip", "Occupied parking space");
+                statusIcon.setAttribute("aria-label","Occupied Parking Space")
+            
             }
 
             space.appendChild(statusIcon);
@@ -88,3 +89,4 @@
     </script>
 
 </body>
+</html>

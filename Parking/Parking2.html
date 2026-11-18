@@ -3,9 +3,8 @@
 
 <head>
     <meta charset = "UTF-8">
-    <meta 
-    name="viewpoint" 
-    content="width-device-width,initial-scale = 1.0">
+    <meta name="viewpoint" content="width-device-width,initial-scale = 1.0">
+    <link rel="stylesheet" href="../style.css">
     <title>Parking Structure 2</title>
 </head>
 
@@ -20,24 +19,24 @@
         Available spaces and parking details can be shown below
     </p>
 
-    <section class="parking-lot2">
-        <div class="parking-space2"></div>
-        <div class="parking-space2"></div>
+    <section class="parking-lot">
+        <div class="parking-space"></div>
+        <div class="parking-space"></div>
 
-        <div class="parking-space2"></div>
-        <div class="parking-space2"></div>
+        <div class="parking-space"></div>
+        <div class="parking-space"></div>
 
-        <div class="parking-space2"></div>
-        <div class="parking-space2"></div>
+        <div class="parking-space"></div>
+        <div class="parking-space"></div>
 
-        <div class="parking-space2"></div>
-        <div class="parking-space2"></div>
+        <div class="parking-space"></div>
+        <div class="parking-space"></div>
 
-        <div class="parking-space2"></div>
-        <div class="parking-space2"></div>
+        <div class="parking-space"></div>
+        <div class="parking-space"></div>
 
-        <div class="parking-space2"></div>
-        <div class="parking-space2"></div>
+        <div class="parking-space"></div>
+        <div class="parking-space"></div>
     </section>
 
     <button
@@ -46,4 +45,42 @@
     >
         Back to Campus Map
     </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+             const parkingSpaces = document.querySelectorAll(".parking-space");
+
+            parkingSpaces.forEach(function(space) {
+                const statusIcon=document.createElement("span");
+                const isAvailable=Math.random() < 0.5;
+
+                if(isAvailable) {
+                    statusIcon.className="space-status available";
+                    statusIcon.textContent="✓";
+                    statusIcon.setAttribute("data-tooltip", "Available Parking Space");
+                    statusIcon.setAttribute("aria-label", "Available Parking Space");
+                } else {
+                    const carIcon=document.createElement("span");
+
+                    carIcon.className="car-icon";
+                    carIcon.textContent="🚗";
+                    carIcon.setAttribute("data-tooltip", "Car is parked");
+
+                    space.appendChild(carIcon);
+
+                    statusIcon.className="space-status occupied";
+                    statusIcon.textContent="×";
+                    statusIcon.setAttribute("data-tooltip", "Occupied Parking Space");
+                    statusIcon.setAttribute("aria-label", "Occupied Parking Space");
+                }
+
+                space.appendChild(statusIcon);
+            });
+
+        });
+          
+        </script>
+
 </body>
+</html>
