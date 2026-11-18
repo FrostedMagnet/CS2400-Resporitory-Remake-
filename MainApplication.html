@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Page</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <section class = "welcome section">
+            <h1>Welcome Bronco Users</h1>
+
+            <p>Find Parking Locations around the Cal Poly Pomona Campus.
+                Hover over the parking icons to learn more about the parking Locations.
+                Click on the parking icons to learn more about the parking Location.
+            </p>
+        </section>
+        
+        <section class = "parking-section">
+            <h2>Campus Parking Map</h2>
+
+            <div class = "map-container" id = "mapContainer">
+                <button class = "zoom-button zoom-in" onclick = "zoomIn()">+</button>
+                <button class = "zoom-button zoom-out" onclick = "zoomOut()">-</button>
+            
+                <div class = "map-content" id = "mapContent">
+                    <img
+                        src="cpp campus map.png"
+                        alt="Cal Poly Pomona Campus Map"
+                    >
+                    
+                    <!--The Parking Icon 1--> 
+                    <button
+                        class="parking-icon parking-one"
+                        type="button"
+                        onclick="window.location.href='./Parking/Parking1.html'"
+                        >
+                        P 
+                    
+                        <span class = "parking-tooltip">
+                            Parking Structure 1
+                        </span>
+                    </button>
+
+                    <!--The Parking Icon 2-->
+                    <button 
+                    class = "parking-icon2 parking-two" 
+                    type = "button"
+                    onclick="window.location.href='./Parking/Parking2.html'"
+                    >
+                        P 
+
+                        <span class = "parking-tooltip2">
+                            Parking Structure 2 
+                        </span>
+                    </button>
+
+                    <!--The Parking Icon 3-->
+                    <button 
+                    class = "parking-icon3 parking-three" 
+                    type = "button"
+                    onclick="window.location.href='./Parking/Parking3.html'"
+                    >
+                        P 
+
+                        <span class = "parking-tooltip3">
+                            Parking Structure 3
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+       <script>
+            const mapContainer = document.getElementById("mapContainer");
+            const mapContent = document.getElementById("mapContent");
+
+            let isDragging = false;
+            let dragStartX = 0; 
+            let dragStartY = 0;
+            let startingMapX = 0;
+            let startingMapY = 0;
+
+            let mapX = 0;
+            let mapY = 0;
+            let zoomLevel = 1;
+
+            mapContainer.addEventListener("pointerdown", function(event) {
+                if (
+                event.target.closest(".zoom-button") ||
+                event.target.closest(".parking-icon") ||
+                event.target.closest(".parking-icon2") ||
+                event.target.closest(".parking-icon3") 
+                ) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                isDragging = true;
+
+                dragStartX = event.clientX;
+                dragStartY = event.clientY;
+
+                startingMapX = mapX;
+                startingMapY = mapY;
+
+                mapContainer.setPointerCapture(event.pointerId);
+                mapContainer.classList.add("dragging");
+            });
+
+            mapContainer.addEventListener("pointermove", function(event) {
+                if(!isDragging)return;
+
+                const distanceX = event.clientX - dragStartX;
+                const distanceY = event.clientY - dragStartY;
+
+                mapX = startingMapX + distanceX;
+                mapY = startingMapY + distanceY;
+
+                updateMap();
+            });
+
+            mapContainer.addEventListener("pointerup", stopDragging);
+            mapContainer.addEventListener("pointercancel", stopDragging);
+
+            function stopDragging(event) {
+                isDragging = false; 
+                mapContainer.releasePointerCapture?.(event.pointerId);
+                mapContainer.classList.remove("dragging");
+            }
+        
+
+
+            function zoomIn() {
+                zoomLevel += 0.1;
+                updateMap();
+            }
+
+            function zoomOut() {
+                if (zoomLevel > 1) {
+                zoomLevel -= 0.1;
+                updateMap();
+                }
+            }
+
+            function updateMap() {
+                const containerWidth = mapContainer.clientWidth;
+                const containerHeight = mapContainer.clientHeight;
+
+                const mapWidth = containerWidth * zoomLevel;
+                const mapHeight = containerHeight * zoomLevel;
+
+                const minimumX = Math.min(0, containerWidth - mapWidth);
+                const minimumY = Math.min(0, containerHeight - mapHeight);
+
+                mapX = Math.max(minimumX, Math.min(mapX,0));
+                mapY = Math.max(minimumY, Math.min(mapY, 0));
+
+                mapContent.style.transform = `translate(${mapX}px, ${mapY}px) scale(${zoomLevel})`;
+            }
+            </script>
+    </body>
+    </html>
