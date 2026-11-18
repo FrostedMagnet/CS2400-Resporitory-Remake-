@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, inital-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+        <title>Parking Navigation</title>
+    </head>
+
+    <body>
+        <h1>Parking Space Available</h1>
+
+        <p id="spaceMessage"></p>
+
+        <section class="navigation-map">
+            <img scr="../cpp campus map.png" alt="CPP Campus Map">
+
+            <div class="start-marker">A</div>
+            <div class="destination-marker">P</div>
+
+            <svg class="route" viewBox="0 0 100 100">
+                <line x1="25" y1="70" x2="70" y2="35"></line>
+            </svg>
+        </section>
+
+        <p class="navigation-message">
+            Follow the route from Location A to your Parrking Space
+        </p>
+
+        <button onclick="window.location.href='../MainApplication.html'">
+            Back to Campus Map
+        </button>
+
+       <script>
+        const parkingSpaceNumber=Math.floor(Math.random() * 30) + 1;
+
+        document.getElementById("spaceMessage").textContent=
+            "Your assigned parking space is Space " + parkingSpaceNumber;
+       </script>
+    </body>
+</html>

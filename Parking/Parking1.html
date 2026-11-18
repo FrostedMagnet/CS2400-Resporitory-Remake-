@@ -66,6 +66,10 @@
                 statusIcon.textContent = "✓";
                 statusIcon.setAttribute("data-tooltip", "Available parking space");
                 statusIcon.setAttribute("aria-label", "Available Parking Space");
+                
+                statusIcon.addEventListener("click", function() {
+                    window.location.href="AvailableSpace.html";
+                });
             } else {
                     const carIcon = document.createElement("span");
                     carIcon.className="car-icon";
