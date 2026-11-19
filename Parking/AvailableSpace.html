@@ -10,9 +10,11 @@
     </head>
 
     <body>
+        <section class="availability-header">
         <h1>Parking Space Available</h1>
-
         <p id="spaceMessage"></p>
+        </section>
+        
 
         <section class="navigation-map">
             <img src="../cpp campus map.png" alt="CPP Campus Map">
@@ -26,6 +28,10 @@
         
         </section>
 
+         <p class="navigation-message">
+            Please Follow the Route from Your Location A to your Parking Space
+        </p>
+
         <div class="trip-info">
             <p id="estimateTime"></p>
             <p id="estimateMiles"></p>
@@ -37,11 +43,12 @@
         <p id="navigationStatus"></p>
         </div>
 
-        <p class="navigation-message">
-            Follow the route from Location A to your Parking Space
-        </p>
 
-        <button onclick="window.location.href='../MainApplication.html'">
+
+        <button
+        class="back-button"
+        type="button"
+         onclick="window.location.href='../MainApplication.html'">
             Back to Campus Map
         </button>
 
