@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+        <title>Navigation Started</title>
+    </head>
+
+    <body>
+        <h1>Navigation Started</h1>
+        
+        <p>Please Follow the Blue Route to Your Assigned Parking Space</p>
+
+       <section class="navigation-map">
+            <img src="../cpp campus map.png" alt="CPP Navigation Map">
+
+            <div class="start-marker">A</div>
+            <div class="destination-marker">P</div>
+
+            <svg class="route" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polyline points ="25,70,35,65,45,55 55,60,65,68,70,72"></polyline>
+            </svg>
+
+            <div class="route-car">🚗</div>
+       </section>>
+            <br><br>
+
+            <button 
+            class="cancel-button"
+            type="button"
+            onclick="window.location.href='AvailableSpace.html'">
+            Cancel Navigation
+        </button>
+    </body>
+</html>

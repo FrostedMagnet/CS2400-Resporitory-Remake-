@@ -2,7 +2,9 @@
 <html lang ="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewpoint" content="width=device-width, inital-scale=1.0">
+        <meta 
+        name="viewpoint" 
+        content="width=device-width, inital-scale=1.0">
         <link rel="stylesheet" href="../style.css">
         <title>Parking Navigation</title>
     </head>
@@ -13,18 +15,30 @@
         <p id="spaceMessage"></p>
 
         <section class="navigation-map">
-            <img scr="../cpp campus map.png" alt="CPP Campus Map">
+            <img src="../cpp campus map.png" alt="CPP Campus Map">
 
             <div class="start-marker">A</div>
             <div class="destination-marker">P</div>
 
-            <svg class="route" viewBox="0 0 100 100">
-                <line x1="25" y1="70" x2="70" y2="35"></line>
+            <svg class="route" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polyline points="25,70,35,65,45,55 55,60,65,68,70,72"></polyline>
             </svg>
+        
         </section>
 
+        <div class="trip-info">
+            <p id="estimateTime"></p>
+            <p id="estimateMiles"></p>
+
+        <button id="startNavigation" type="button">
+            Begin Navigation
+        </button>
+
+        <p id="navigationStatus"></p>
+        </div>
+
         <p class="navigation-message">
-            Follow the route from Location A to your Parrking Space
+            Follow the route from Location A to your Parking Space
         </p>
 
         <button onclick="window.location.href='../MainApplication.html'">
@@ -36,6 +50,20 @@
 
         document.getElementById("spaceMessage").textContent=
             "Your assigned parking space is Space " + parkingSpaceNumber;
+
+        // Navigation
+        const estimatedMinutes =Math.floor(Math.random()*9) +2;
+        const estimatedMiles =(Math.random()*1.4+0.2).toFixed(1);
+
+        document.getElementById("estimateTime").textContent=
+        "Estimated time: " + estimatedMinutes + " Mins";
+
+        document.getElementById("estimateMiles").textContent=
+        "Estimated distance: " + estimatedMiles + "miles";
+        
+        document.getElementById("startNavigation").addEventListener("click", function() {
+            window.location.href="NavigationStarted.html";
+        });
        </script>
     </body>
 </html>

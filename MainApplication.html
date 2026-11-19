@@ -20,6 +20,26 @@
         <section class = "parking-section">
             <h2>Campus Parking Map</h2>
 
+            <button id="filterButton" type="button">
+                Filter Parking
+            </button>
+
+            <div id="filterMenu" class="filter-menu" hidden>
+                <button type="button" data-filter="all">Show All</button>
+                
+               <button type="button" data-filter="structure1">
+                Parking Structure 1 
+               </button>
+
+               <button type="button" data-filter="structure2">
+                Parking Structure 2
+               </button>
+
+               <button type="button" data-filter="structure3">
+                Parking Structure 3 
+               </button>
+            </div>
+
             <div class = "map-container" id = "mapContainer">
                 <button class = "zoom-button zoom-in" onclick = "zoomIn()">+</button>
                 <button class = "zoom-button zoom-out" onclick = "zoomOut()">-</button>
@@ -32,7 +52,8 @@
                     
                     <!--The Parking Icon 1--> 
                     <button
-                        class="parking-icon parking-one"
+                        class="parking-icon parking-one parking-location"
+                        data-location="structure1"
                         type="button"
                         onclick="window.location.href='./Parking/Parking1.html'"
                         >
@@ -45,7 +66,8 @@
 
                     <!--The Parking Icon 2-->
                     <button 
-                    class = "parking-icon2 parking-two" 
+                    class = "parking-icon2 parking-two parking-location" 
+                    data-location="structure2"
                     type = "button"
                     onclick="window.location.href='./Parking/Parking2.html'"
                     >
@@ -58,7 +80,8 @@
 
                     <!--The Parking Icon 3-->
                     <button 
-                    class = "parking-icon3 parking-three" 
+                    class = "parking-icon3 parking-three parking-location" 
+                    data-location="structure3"
                     type = "button"
                     onclick="window.location.href='./Parking/Parking3.html'"
                     >
@@ -160,6 +183,34 @@
 
                 mapContent.style.transform = `translate(${mapX}px, ${mapY}px) scale(${zoomLevel})`;
             }
+
+
+
+
+            //Filter Button
+            const filterButton=document.getElementById("filterButton");
+            const filterMenu=document.getElementById("filterMenu");
+            const filterOption=document.querySelectorAll("[data-filter]");
+            const parkingLocations=
+                document.querySelectorAll(".parking-location");
+
+            filterButton.addEventListener("click", function() {
+                filterMenu.hidden=!filterMenu.hidden;
+            });
+
+            filterOption.forEach(function (option) {
+                option.addEventListener("click", function() {
+                    const selectedFilter=option.dataset.filter;
+
+                    parkingLocations.forEach(function (location) {
+                        location.hidden = 
+                            selectedFilter !== "all" &&
+                            location.dataset.location !== selectedFilter;
+                    });
+
+                    filterMenu.hidden=true;
+                });
+            });
             </script>
     </body>
     </html>
