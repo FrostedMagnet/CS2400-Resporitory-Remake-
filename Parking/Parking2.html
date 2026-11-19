@@ -12,11 +12,17 @@
 
     <section class="parking-header">
     <h1>Parking Structure 2</h1>
-
-    <p>This page contains information about Parking Structure 2  </p>
-
-    <p> Available spaces and parking details can be shown below</p>
-
+        <p>This page contains information about Parking Structure 2</p>
+        <table style="width:100%; margin:0 auto;">
+            <tr>
+                <th>Available Spaces</th>
+                <th>Estimated Time To Park</th>
+            </tr>
+            <tr>
+                <td><span id="available_spaces"></span> spaces</td>
+                <td><1 min</td>
+            </tr>
+        </table>
     </section>
     
 
@@ -49,7 +55,8 @@
     </button>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        let avail_spaces = 0;
+	document.addEventListener("DOMContentLoaded", function () {
 
              const parkingSpaces = document.querySelectorAll(".parking-space");
 
@@ -58,7 +65,8 @@
                 const isAvailable=Math.random() < 0.5;
 
                 if(isAvailable) {
-                    statusIcon.className="space-status available";
+                    avail_spaces += 1;
+		    statusIcon.className="space-status available";
                     statusIcon.textContent="✓";
                     statusIcon.setAttribute("data-tooltip", "Available Parking Space");
                     statusIcon.setAttribute("aria-label", "Available Parking Space");
@@ -83,6 +91,7 @@
 
                 space.appendChild(statusIcon);
             });
+	document.getElementById("available_spaces").textContent = avail_spaces;
 
         });
           
