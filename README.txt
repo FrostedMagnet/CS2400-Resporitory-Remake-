@@ -1,0 +1,1 @@
+This is a high-fidelity prototype for a live map of campus parking at Cal Poly Pomona. To get started, simply open up MainApplication.html in any standard browser. The source code can also be found on GitHub: https://github.com/FrostedMagnet/CS2400-Resporitory-Remake-.git

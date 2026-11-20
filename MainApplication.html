@@ -8,16 +8,16 @@
     </head>
 
     <body>
-        <section class = "welcome-section">
+        <section class="welcome-section">
             <h1>Welcome Bronco Users</h1>
 
             <p>Find Parking Locations around the Cal Poly Pomona Campus.
-                Hover over the parking icons to learn more about the parking Locations.
-                Click on the parking icons to learn more about the parking Location.
+               Click on the parking icons to see available parking in real-time. 
             </p>
+	    <input type="text" placeholder="Search...">
         </section>
         
-        <section class = "parking-section">
+        <section class="parking-section">
             <h2>Campus Parking Map</h2>
 
             <button id="filterButton" type="button">
@@ -40,42 +40,31 @@
                </button>
             </div>
 
-            <div class = "map-container" id = "mapContainer">
-                <button class = "zoom-button zoom-in" onclick = "zoomIn()">+</button>
-                <button class = "zoom-button zoom-out" onclick = "zoomOut()">-</button>
+            <div class="map-container" id="mapContainer">
+                <button class="zoom-button zoom-in" onclick = "zoomIn()">+</button>
+                <button class="zoom-button zoom-out" onclick = "zoomOut()">-</button>
             
-                <div class = "map-content" id = "mapContent">
-                    <img
-                        src="cpp campus map.png"
-                        alt="Cal Poly Pomona Campus Map"
-                    >
+                <div class="map-content" id="mapContent">
+                    <img src="cpp campus map.png" alt="Cal Poly Pomona Campus Map">
                     
                     <!--The Parking Icon 1--> 
                     <button
-                        class="parking-icon parking-one parking-location"
-                        data-location="structure1"
-                        type="button"
-                        onclick="window.location.href='./Parking/Parking1.html'"
-                        >
-                        P 
-                    
-                        <span class = "parking-tooltip">
-                            Parking Structure 1
-                        </span>
+                    class="parking-icon parking-one parking-location"
+                    data-location="structure1"
+                    type="button"
+                    onclick="window.location.href='./Parking/Parking1.html'">
+                         P 
+                         <span class = "parking-tooltip">Parking Structure 1</span>
                     </button>
 
                     <!--The Parking Icon 2-->
-                    <button 
+                    <button
                     class = "parking-icon2 parking-two parking-location" 
                     data-location="structure2"
                     type = "button"
-                    onclick="window.location.href='./Parking/Parking2.html'"
-                    >
-                        P 
-
-                        <span class = "parking-tooltip2">
-                            Parking Structure 2 
-                        </span>
+                    onclick="window.location.href='./Parking/Parking2.html'">
+                        P
+                        <span class = "parking-tooltip2">Parking Structure 2</span>
                     </button>
 
                     <!--The Parking Icon 3-->
@@ -83,16 +72,12 @@
                     class = "parking-icon3 parking-three parking-location" 
                     data-location="structure3"
                     type = "button"
-                    onclick="window.location.href='./Parking/Parking3.html'"
-                    >
-                        P 
-
-                        <span class = "parking-tooltip3">
-                            Parking Structure 3
-                        </span>
+                    onclick="window.location.href='./Parking/Parking3.html'">
+                        P
+                        <span class = "parking-tooltip3">Parking Structure 3</span>
                     </button>
                 </div>
-            </div>
+	    </div>
         </section>
 
        <script>
